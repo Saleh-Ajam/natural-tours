@@ -48,3 +48,11 @@ process.on('unhandledRejection', err => {
     process.exit(1);
   });
 });
+
+process.on('SIGTERM', () => {
+  // SIGTERM is a signal that cuase the app to stop running so we don't need to exit(1)
+  console.log('SIGTERM RECEIVED. Shutting down gracefully.');
+  server.close(()=> {
+    console.log('Process terminated!');
+  });
+});
