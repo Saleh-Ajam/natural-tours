@@ -16,6 +16,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
@@ -55,6 +56,7 @@ const limiter = rateLimit({
 });
 
 app.use('/api',limiter);
+app.post('/webhook-checkout', express.raw({type: 'application/json'}), bookingController.webhookCheckout); //we put this root before the body parser because we need the response in raw format to work properly
 //Body parser, reading data from the body into req.body limited the data to 10 kilo bytes
 app.use(express.json({limit:'10kb'})); // this parses the data from the body
 app.use(express.urlencoded({ extended: true, limit: '10kb'})); // this for parsing the form body data
