@@ -1,0 +1,8 @@
+heroku login
+heroku create 
+git push heroku master
+heroku open
+heroku apps:rename natural-tours
+heroku ps
+heroku ps:restart
+heroku logs --tail
