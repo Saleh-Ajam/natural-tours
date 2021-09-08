@@ -6,3 +6,4 @@ heroku apps:rename natural-tours
 heroku ps
 heroku ps:restart
 heroku logs --tail
+heroku config:set envVar=......
