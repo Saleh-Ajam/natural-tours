@@ -25,11 +25,11 @@ block content
             h1.heading-primary
                 span= `${tour.name} tour`
             .heading-box__group
-                .heading-box__detail
+                .heading-box__detail.heading-tour-days-place
                     svg.heading-box__icon
                         use(xlink:href='/img/icons.svg#icon-clock')
                     span.heading-box__text=`${tour.duration} days`
-                .heading-box__detail
+                .heading-box__detail.heading-tour-days-place
                     svg.heading-box__icon
                         use(xlink:href='/img/icons.svg#icon-map-pin')
                     span.heading-box__text=tour.startLocation.description
