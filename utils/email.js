@@ -7,7 +7,7 @@ module.exports = class Email {
         this.to = user.email;
         this.firstname = user.name.split(' ')[0];
         this.url = url;
-        this.from = `Jonas Schmedtmann <${process.env.EMAIL_FROM}>`;
+        this.from = `Sal <${process.env.EMAIL_FROM}>`;
     }
 
     makeTransport() {
@@ -56,10 +56,10 @@ module.exports = class Email {
     }
 
     async sendWelcome(){
-        // await this.send('welcome', 'Welcome to the Natours Family!');
+        await this.send('welcome', 'Welcome to the Natural Tours Family!');
     }
 
     async sendPasswordReset() {
-        // await this.send('passwordReset', 'Your password reset token (valid for only 10 minutes)');
+        await this.send('passwordReset', 'Your password reset token (valid for only 10 minutes)');
     }
 };
