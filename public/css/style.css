@@ -171,10 +171,8 @@ body {
 
 .heading-tertirary {
   font-size: 2.75rem;
-  text-align: right;
   position: absolute;
   bottom: 1rem;
-  right: 2rem;
   width: 70%;
   z-index: 10;
 }
@@ -226,11 +224,11 @@ body {
   background-color: #fff;
 }
 
-.btn--green {
+.btn--blue {
   background-color: #408ec6;
   color: #fff;
 }
-.btn--green::after {
+.btn--blue::after {
   background-color: #408ec6;
 }
 
@@ -1104,14 +1102,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background-image: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    from(#7dd56f),
-    to(#28b487)
-  ); */
-  /* background-image: linear-gradient(to right bottom, #7dd56f, #28b487); */
   opacity: 0.7;
 }
 .card__picture-img {
@@ -1320,4 +1310,77 @@ body {
 }
 .heading-tour-days-place {
   background-image: linear-gradient(to bottom right, #408ec673, #2c398a73);
+}
+
+@media only screen and (max-width: 62.5em) {
+  .header {
+    height: 18rem;
+  }
+  .nav__el--cta {
+    margin-bottom: 5px;
+  }
+  .nav__user-img {
+    margin-bottom: 5px;
+  }
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .heading-primary {
+    font-size: 2.5rem;
+  }
+}
+@media only screen and (max-width: 43em) {
+  .header {
+    height: 18rem;
+  }
+  .nav__el--cta {
+    margin-bottom: 5px;
+  }
+  .nav__user-img {
+    margin-bottom: 5px;
+  }
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  .heading-primary span {
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .heading-box__group {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .card .btn {
+    grid-row: 3/3;
+    align-self: center;
+    margin-left: 19px;
+    text-align: center;
+  }
+  .card__details {
+    grid-column-gap: 0.7rem;
+  }
+  .footer__nav {
+    display: block;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .card .btn {
+    grid-row: 3/3;
+    align-self: center;
+    margin-left: 1px;
+    text-align: center;
+  }
+  .card__details {
+    display: block;
+  }
+  .card__details > * {
+    margin-top: 10px;
+  }
+  .heading-tertirary {
+    font-size: 1.75rem;
+  }
 }
