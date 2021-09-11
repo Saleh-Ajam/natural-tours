@@ -1312,6 +1312,9 @@ body {
 .heading-tour-days-place {
   background-image: linear-gradient(to bottom right, #408ec673, #2c398a73);
 }
+.user-menu-icon {
+  visibility: hidden;
+}
 
 @media only screen and (max-width: 1250px) {
   .heading-primary {
@@ -1449,7 +1452,9 @@ body {
   #user_links {
     display: none;
   }
-
+  .user-menu-icon {
+    visibility: visible;
+  }
   .user-view__menu a.user-menu-icon {
     color: white;
     padding: 14px 16px;
