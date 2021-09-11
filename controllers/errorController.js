@@ -32,7 +32,10 @@ const sendErrorDev = (err, req, res) =>{
   } else {
     // B) RENDERED WEBSITE
     console.error('Error: ', err);
-    return res.status(err.statusCode).render('error', {
+    return res.status(err.statusCode).set(
+      'Content-Security-Policy',
+      "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+    ).render('error', {
       title: 'Something went wrong!',
       msg: err.message
     })
@@ -64,7 +67,10 @@ const sendErrorProduction = (err, req, res) =>{
     // B) RENDERES WEBSITE
     // A) operational, trusted error: send message to client
     if(err.isOperational){
-      return res.status(err.statusCode).render('error', {
+      return res.status(err.statusCode).set(
+        'Content-Security-Policy',
+        "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      ).render('error', {
         title: 'Something went wrong!',
         msg: err.message
       })
@@ -74,7 +80,10 @@ const sendErrorProduction = (err, req, res) =>{
       console.error('Error: ', err);
 
       // 2) Send generic message 
-      return res.status(err.statusCode).render('error', {
+      return res.status(err.statusCode).set(
+        'Content-Security-Policy',
+        "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      ).render('error', {
         title: 'Something went wrong!',
         msg: 'Please try again later.'
       })

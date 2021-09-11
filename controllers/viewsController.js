@@ -47,8 +47,8 @@ exports.getTour = catchAsync(async(req, res, next) => {
   });
 });
 
-exports.getLoginForm = (req, res) => {
-
+exports.getLoginForm = (req, res, next) => {
+  if(res.locals.user) return next(new AppError('You are already logged in.', 403));
   // res.setHeader('Content-Security-Policy', 'script-src cdnjs.cloudflare.com'); 
   // connect-src script-src cdnjs.cloudflare.com now is not necessary because we install axios as npm module
   // res.status(200).set(
