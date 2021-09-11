@@ -1374,6 +1374,22 @@ body {
   .error__title .heading-secondary.heading-secondary--error {
     font-size: 2.5rem;
   }
+  .user-view__menu {
+    -webkit-box-flex: 26rem;
+    flex: 26rem 0 0;
+  }
+  .main.main.main-acount {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .user-view__form-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .form-user-password {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 @media only screen and (max-width: 43em) {
   .header {
@@ -1412,6 +1428,47 @@ body {
   }
   main.main.main-login {
     padding: 0;
+  }
+  .user-view {
+    display: block;
+  }
+  .form-user-password {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .user-view__menu {
+    overflow: hidden;
+    position: relative;
+  }
+
+  #user_links {
+    display: none;
+  }
+
+  .user-view__menu a.user-menu-icon {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    background: transparent;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: 'Lato', sans-serif;
+    float: left;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  .user-view__menu a.user-menu-icon:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
 

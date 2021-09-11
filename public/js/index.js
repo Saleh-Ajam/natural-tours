@@ -12,6 +12,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
+const userMenu = document.getElementById('user-menu-icon');
 
 // VALUES
 
@@ -80,3 +81,14 @@ if(bookBtn){
 
 const alertMessage = document.querySelector('body').dataset.alert;
 if(alertMessage) showAlert('success', alertMessage, 20);
+
+if (userMenu){
+    userMenu.addEventListener('click', e=>{
+        var x = document.getElementById('user_links');
+        if (x.style.display === 'block') {
+            x.style.display = 'none';
+        } else {
+            x.style.display = 'block';
+        }
+    });
+}
