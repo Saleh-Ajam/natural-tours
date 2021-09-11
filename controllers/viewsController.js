@@ -63,6 +63,17 @@ exports.getLoginForm = (req, res, next) => {
     title: 'Log into your account'
   })
 };
+exports.getSignupForm = (req, res, next) => {
+  if(res.locals.user) return next(new AppError('You are already logged in.', 403));
+
+  res.status(200).set(
+    'Content-Security-Policy',
+    "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+  )
+  .render('signup',{
+    title: 'Sign up'
+  })
+};
 
 exports.getAccount = (req, res) => {
   res.status(200).set(

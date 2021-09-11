@@ -39,3 +39,21 @@ export const logout = async () => {
         showAlert('error', 'Error logging out! try again.');
     }
 }
+
+export const signup = async (creds) => {
+    try{
+        const res = await axios({
+            method: 'POST',
+            url: '/api/v1/users/signup',
+            data: {...creds}
+        });
+        if(res.data.status = 'success'){            
+            window.setTimeout(() => {
+                showAlert('success','Sign up successfuly!');
+                location.assign('/');
+            }, 1500); 
+        }
+    }catch(err){
+        showAlert('error', err.response.data.message);
+    }
+}
