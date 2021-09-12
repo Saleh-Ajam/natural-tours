@@ -1,0 +1,25 @@
+extends base
+
+block content
+    main.main.main-aboutus
+        section.section-info
+            img(src='/img/aboutus/sea-phone.jpg')
+            // image here
+            .content
+                h2 Our History
+                span
+                // line here
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, nulla, esse quae officiis itaque blanditiis eaque at accusamus incidunt sunt repellat ipsa adipisci? Vero cumque, est obcaecati modi quam tempore. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, voluptas? Quidem ipsum quaerat enim voluptatibus quibusdam. Unde, nesciunt! Nostrum saepe recusandae quia tenetur modi nisi est eaque mollitia distinctio nam.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates officia illum tempora, cupiditate corporis in quisquam animi nam possimus tempore repudiandae aspernatur nulla, autem numquam. Earum nisi placeat cum rerum.
+
+        section.section-guides 
+            .overview-box__detail
+                h2 Our Guides :
+                .guides-aboutus
+                    each guide in guides
+                        .guide-aboutus
+                            img.overview-box__img(src=`/img/users/${guide.photo}`, alt=`${guide.name}`)
+                            - if(guide.role === 'lead-guide')
+                                span.overview-box__label Lead guide
+                            - if(guide.role === 'guide')
+                                span.overview-box__label Tour guide
+                            span.overview-box__text= guide.name

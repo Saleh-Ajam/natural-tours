@@ -1316,7 +1316,38 @@ body {
 .user-menu-icon {
   visibility: hidden;
 }
-
+main.main.main-aboutus .content h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+main.main.main-aboutus section {
+  display: flex;
+}
+main.main.main-aboutus .content {
+  margin-left: 20px;
+  align-self: center;
+}
+main.main.main-aboutus .content p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+main.main.main-aboutus section.section-info img {
+  max-width: 50%;
+  text-align: center;
+  display: inline-block;
+}
+main.main.main-aboutus section.section-guides .overview-box__detail h2 {
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+main.main.main-aboutus section.section-guides .overview-box__detail {
+  display: block;
+}
+.guide-aboutus {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;
@@ -1394,6 +1425,17 @@ body {
   .form-user-password {
     padding-left: 40px;
     padding-right: 40px;
+  }
+  main.main.main-aboutus section {
+    display: block;
+  }
+  main.main.main-aboutus section.section-info img {
+    max-width: 100%;
+    text-align: center;
+    display: inline-block;
+  }
+  main.main.main-aboutus .content {
+    margin-left: 0px;
   }
 }
 @media only screen and (max-width: 43em) {

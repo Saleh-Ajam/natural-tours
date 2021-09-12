@@ -10,6 +10,7 @@ router.get('/tour/:slug', authController.isLoggedIn, viewsController.getTour);
 router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/signup', authController.isLoggedIn, viewsController.getSignupForm);
 router.get('/contactus', authController.isLoggedIn, viewsController.getContactUsForm);
+router.get('/aboutus', authController.isLoggedIn, viewsController.getAboutUs);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-bookings', authController.protect, viewsController.getMyTours);
 router.post('/submit-user-data', authController.protect, viewsController.updateUserData);

@@ -84,6 +84,18 @@ exports.getContactUsForm = (req, res, next) => {
   })
 };
 
+exports.getAboutUs = catchAsync(async(req, res, next) => {
+  const guides = await User.find({$or: [{role: 'guide'},{role:'lead-guide'}]});
+  res.status(200).set(
+    'Content-Security-Policy',
+    "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+  )
+  .render('aboutus',{
+    title: 'About us',
+    guides
+  })
+});
+
 exports.getAccount = (req, res) => {
   res.status(200).set(
     'Content-Security-Policy',
