@@ -11,6 +11,8 @@ router.get('/login', authController.isLoggedIn, viewsController.getLoginForm);
 router.get('/signup', authController.isLoggedIn, viewsController.getSignupForm);
 router.get('/contactus', authController.isLoggedIn, viewsController.getContactUsForm);
 router.get('/aboutus', authController.isLoggedIn, viewsController.getAboutUs);
+router.get('/forgot-password', authController.isLoggedIn, viewsController.getForgotPasswordForm);
+router.get('/reset-password/:resetToken', authController.isLoggedIn, viewsController.getResetPasswordForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-bookings', authController.protect, viewsController.getMyTours);
 router.post('/submit-user-data', authController.protect, viewsController.updateUserData);

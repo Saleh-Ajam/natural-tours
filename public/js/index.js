@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import {displayMap} from './mapbox';
-import {login, logout, signup} from './login';
+import {login, logout, signup, forgotPassword, resetPassword} from './login';
 import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
@@ -10,6 +10,8 @@ const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
 const contactUsForm = document.querySelector('.form--contactus');
+const forgotPasswordForm = document.querySelector('.form--forgot--password');
+const resetPasswordForm = document.querySelector('.form--reset--password');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -52,6 +54,22 @@ if(signupForm){
     });
 }
 
+if(forgotPasswordForm){
+    forgotPasswordForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        forgotPassword(email);
+    });
+}
+if(resetPasswordForm){
+    resetPasswordForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('confirm-password').value;
+        const token = location.pathname.split('/')[location.pathname.split('/').length-1];
+        resetPassword(token, password, passwordConfirm);
+    });
+}
 if(logOutBtn) logOutBtn.addEventListener('click', logout)
 
 if(userDataForm) {

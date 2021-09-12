@@ -1208,8 +1208,10 @@ body {
 }
 
 .login-form,
+.reset-password-form,
 .signup-form,
-.login-contactus {
+.login-contactus,
+.forgot-password-form {
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;
@@ -1348,6 +1350,17 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   display: flex;
   align-items: center;
 }
+.alrady-have-acount-signup,
+.forgot-pass-link-login {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #408ec6;
+  font-family: 'Lato', sans-serif;
+}
+.alrady-have-acount-signup:hover,
+.forgot-pass-link-login:hover {
+  text-decoration: underline;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;
@@ -1474,8 +1487,10 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
     font-size: 1.5rem;
   }
   main.main.main-login,
+  main.main.main-reset-password,
   main.main.main-signup,
-  main.main.main-contactus {
+  main.main.main-contactus,
+  main.main-forgot-password {
     padding: 0;
   }
   .user-view {

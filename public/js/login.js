@@ -48,10 +48,45 @@ export const signup = async (creds) => {
             data: {...creds}
         });
         if(res.data.status = 'success'){            
+            showAlert('success','Sign up successfuly!');
             window.setTimeout(() => {
-                showAlert('success','Sign up successfuly!');
                 location.assign('/');
-            }, 1500); 
+            }, 5000); 
+        }
+    }catch(err){
+        showAlert('error', err.response.data.message);
+    }
+}
+
+export const forgotPassword = async(email) => {
+    try{
+        const res = await axios({
+            method: 'POST',
+            url: '/api/v1/users/forgotPassword',
+            data: {email}
+        });
+        if(res.data.status = 'success'){            
+            showAlert('success','Check out your email inbox');
+            window.setTimeout(() => {
+                location.reload(true);
+            }, 5000); 
+        }
+    }catch(err){
+        showAlert('error', err.response.data.message);
+    }
+}
+export const resetPassword = async(token, password, passwordConfirm) => {
+    try{
+        const res = await axios({
+            method: 'PATCH',
+            url: `/api/v1/users/resetPassword/${token}`,
+            data: {password, passwordConfirm}
+        });
+        if(res.data.status = 'success'){            
+            showAlert('success','Password Changed Successfully');
+            window.setTimeout(() => {
+                location.assign('/');
+            }, 5000); 
         }
     }catch(err){
         showAlert('error', err.response.data.message);
