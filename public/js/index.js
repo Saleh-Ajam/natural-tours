@@ -9,6 +9,7 @@ import { showAlert } from './alerts';
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
+const contactUsForm = document.querySelector('.form--contactus');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -30,6 +31,16 @@ if(loginForm)
         const password = document.getElementById('password').value;
         login(email, password);
     });
+
+    if(contactUsForm) {
+        contactUsForm.addEventListener('submit', e => {
+            showAlert('success', 'Thanks for your feedback',7);
+            setTimeout(() =>{
+                location.reload(true);
+            }, 8500);
+        });
+    }
+    
 if(signupForm){
     signupForm.addEventListener('submit', e => {
         e.preventDefault();

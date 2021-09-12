@@ -9104,6 +9104,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
 var signupForm = document.querySelector('.form--signup');
+var contactUsForm = document.querySelector('.form--contactus');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
@@ -9122,6 +9123,15 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
   var password = document.getElementById('password').value;
   (0, _login.login)(email, password);
 });
+
+if (contactUsForm) {
+  contactUsForm.addEventListener('submit', function (e) {
+    (0, _alerts.showAlert)('success', 'Thanks for your feedback', 7);
+    setTimeout(function () {
+      location.reload(true);
+    }, 8500);
+  });
+}
 
 if (signupForm) {
   signupForm.addEventListener('submit', function (e) {
@@ -9256,7 +9266,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58768" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56218" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

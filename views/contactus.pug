@@ -1,0 +1,15 @@
+extends base
+
+block content
+    main.main.main-contactus
+        .login-contactus
+            h2.heading-secondary.ma-bt-lg Contact us
+            form.form.form--contactus
+                .form__group
+                    label.form__label(for='email') Email address
+                    input#email.form__input(type='email', placeholder='you@example.com', required)
+                .form__group.ma-bt-md
+                    label.form__label(for='edit-text') Message
+                    textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8')
+                .form__group
+                    button.btn.btn--blue Send

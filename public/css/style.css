@@ -1208,7 +1208,8 @@ body {
 }
 
 .login-form,
-.signup-form {
+.signup-form,
+.login-contactus {
   margin: 0 auto;
   max-width: 55rem;
   background-color: #fff;
@@ -1430,10 +1431,9 @@ body {
   .heading-secondary {
     font-size: 1.5rem;
   }
-  main.main.main-login {
-    padding: 0;
-  }
-  main.main.main-signup {
+  main.main.main-login,
+  main.main.main-signup,
+  main.main.main-contactus {
     padding: 0;
   }
   .user-view {
