@@ -14,7 +14,11 @@ exports.alerts = (req, res, next) => {
 
 exports.getOverview =catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
-  const tours = await Tour.find();
+  const perPage = 6;
+  const numPages = Math.ceil(await Tour.find().count() / perPage);
+  let currentPage = req.params.pageNum || 1;
+  currentPage = currentPage * 1;
+  tours = await Tour.find().limit(perPage).skip((currentPage-1) * perPage);
   // 2) Build template
   // 3) Render that template using tour data from 1) 
     res.status(200).set(
@@ -22,7 +26,9 @@ exports.getOverview =catchAsync(async (req, res, next) => {
       "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     ).render('overview',{
       title: 'All Tours',
-      tours
+      tours,
+      numPages,
+      currentPage
     });
 });
 

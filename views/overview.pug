@@ -1,4 +1,17 @@
 extends base
+mixin pagination(pages, current)
+    .pagination
+        div
+            if current > 1
+                a(href=`/page-${parseInt(current) - 1}`) Previous
+            - var i = 1
+            while i <= pages
+                if current === i
+                    a.active(href=`/page-${i}`)= i++
+                else
+                    a(href=`/page-${i}`)= i++
+            if current < pages
+                a(href=`/page-${parseInt(current) + 1}`) Next
 
 block content 
     main.main
@@ -43,5 +56,7 @@ block content
                             | 
                             span.card__footer-text= `rating (${tour.ratingsQuantity})`
                         a.btn.btn--blue.btn--small(href=`/tour/${tour.slug}`) Details
+        .pagination-container
+            +pagination(numPages, currentPage)
 
 

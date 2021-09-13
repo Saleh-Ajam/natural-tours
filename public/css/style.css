@@ -1434,6 +1434,36 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
 .forgot-pass-link-login:hover {
   text-decoration: underline;
 }
+.pagination-container {
+  margin-top: 100px;
+  text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  color: #777;
+}
+.pagination a.active {
+  background-color: #408ec6;
+  border: 1px solid #408ec6;
+  color: white;
+}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;
