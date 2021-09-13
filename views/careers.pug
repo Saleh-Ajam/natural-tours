@@ -1,0 +1,35 @@
+extends base
+
+mixin compensationItem(icon, head, des)
+    div
+        .compensation-head-item
+            img(src=`img/assets/${icon}.png`)
+            h1 #{head}
+        .compensation-desc-item
+            p.card__text #{des}
+            
+block content 
+    section.jumbtron-careers 
+        img(src='img/keyboard.jpg')
+        .overlay-text-careers-jumbtron
+            h4 Careers at Natural Tours
+            p We do great work and build 
+            p amazing teams. Join us.
+    main.main.main-careers
+        div.text-container
+            p.huge-pargraph We are engineers, visionaries, data hounds, number crunchers, relationship builders, and storytellers reimagining how tomorrow’s tours.
+            div
+                p Collectively, we solve problems for tourists around the world and unleash the power of human creativity.
+                p We work hard and play hard. Together, we’ve created a dynamic, fun, inspiring environment where we can be ourselves and grow each day.
+        section.compensation
+            h1 Here are just a few of the reasons you’ll love it here.
+            p Our guides make Natural Tours one of the most fun, lifestyle- oriented companies in Newark.
+            section.compensation-items
+                +compensationItem('medical_coverage','Full Medical Coverage', 'Choose from a full suite of medical, vision, and dental plans for you and your dependents. Life and disability, insurance is also available.')
+                +compensationItem('bae_flexible_time_off','Generous Flex Time', 'Forget sick and PTO days. We believe in the power of personal time, so we offer as much vacation time as you need.')
+                +compensationItem('Money_Bag_Dollar','Competitive Salary', 'We believe in attracting and keeping top talent, which is why we’re proud to offer salaries that match or exceed market rates.')
+                +compensationItem('pat_leave','Parental Leave', 'We\'re proud to offer new mothers 12 weeks of paid maternity leave, and new fathers 4 weeks of paid paternity leave.')
+                +compensationItem('k','401(k) Plans', 'Choose from a variety of managed and unmanaged funds and contribute a portion of your salary to Natural Tours\'s 401(k) plan.')
+                +compensationItem('dog_friendly','Dogs Welcome','Although studies show that office dogs are good for business, we choose to have them because they make us feel all warm and fuzzy.')
+                +compensationItem('Lightbulb','Go to Bed Smarter','We\'re all here to level up in our careers. We offer continued learning opportunities like lunch-and-learns, book club, and company-wide learning sessions.')
+                +compensationItem('top_place','Top Place to Work','We\'re lucky to have been named a top place to work in Colorado by several publications. We\'re biased about how great it is to work here, but they\'re not.')

@@ -1220,7 +1220,80 @@ body {
   padding: 5rem 7rem;
   border-radius: 5px;
 }
+section.compensation {
+  margin: 0 auto;
+  max-width: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 5rem 7rem;
+  border-radius: 5px;
+}
+main.main.main-careers section.compensation h1 {
+  font-size: 2rem;
+  color: #408ec6;
+}
+main.main.main-careers section.compensation p {
+  font-size: 1.5rem;
+}
+main.main.main-careers section.compensation-items {
+  max-width: 120rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 7rem;
+}
+main.main.main-careers section.compensation section.compensation-items {
+  margin-top: 50px;
+}
+.compensation-head-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.compensation-head-item img {
+  margin-right: 10px;
+}
+.compensation-desc-item {
+  margin-left: 45px;
+}
+.jumbtron-careers img {
+  width: 100%;
+}
 
+.overlay-text-careers-jumbtron {
+  position: absolute;
+  top: 60%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.overlay-text-careers-jumbtron p {
+  color: floralwhite;
+  font-size: 4rem;
+  font-weight: 600;
+}
+.overlay-text-careers-jumbtron h4 {
+  color: #408ec6;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+main.main.main-careers p {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+main.main.main-careers div.text-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+main.main.main-careers div.text-container p {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 1.7rem;
+}
+main.main.main-careers div.text-container p.huge-pargraph {
+  font-weight: 600;
+  font-size: 2rem;
+}
 .form__input {
   display: block;
   font-family: inherit;
@@ -1365,6 +1438,17 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   .heading-primary {
     font-size: 4rem;
   }
+  .overlay-text-careers-jumbtron {
+    top: 170px;
+    left: 50px;
+    line-height: 1;
+    transform: translate(10%, 10%);
+  }
+  .overlay-text-careers-jumbtron p {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
 }
 @media only screen and (max-width: 62.5em) {
   .header {
@@ -1377,6 +1461,9 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
     margin-bottom: 5px;
   }
   .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  main.main.main-careers section.compensation-items {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1450,6 +1537,16 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   main.main.main-aboutus .content {
     margin-left: 0px;
   }
+  .overlay-text-careers-jumbtron {
+    top: 250px;
+    left: 50px;
+    line-height: 1;
+  }
+  .overlay-text-careers-jumbtron p {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
 }
 @media only screen and (max-width: 43em) {
   .header {
@@ -1463,6 +1560,29 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   }
   .card-container {
     grid-template-columns: 1fr;
+  }
+  main.main.main-careers section.compensation-items {
+    grid-template-columns: 1fr;
+  }
+  main.main.main-careers div.text-container {
+    display: block;
+  }
+  .overlay-text-careers-jumbtron {
+    top: 180px;
+    left: 0;
+    line-height: 1;
+    transform: translate(10%, 10%);
+  }
+  .overlay-text-careers-jumbtron p {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  main.main.main-careers {
+    padding: 20px;
+  }
+  section.compensation {
+    padding: 10px;
   }
   .heading-primary span {
     font-size: 2rem;
@@ -1490,7 +1610,8 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   main.main.main-reset-password,
   main.main.main-signup,
   main.main.main-contactus,
-  main.main-forgot-password {
+  main.main-forgot-password,
+  main.main-forgot-careers {
     padding: 0;
   }
   .user-view {
@@ -1585,5 +1706,14 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   }
   .section-header {
     height: 58vw;
+  }
+  .overlay-text-careers-jumbtron {
+    width: 90%;
+  }
+  main.main.main-careers {
+    padding: 5px;
+  }
+  section.compensation {
+    padding: 10px;
   }
 }
