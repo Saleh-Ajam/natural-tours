@@ -9348,6 +9348,29 @@ if (bookBtn) {
 var alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) (0, _alerts.showAlert)('success', alertMessage, 20);
 
+var respondToVisibility = function respondToVisibility(element, callback) {
+  var options = {
+    root: document.documentElement
+  };
+  var observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      callback(entry.intersectionRatio > 0);
+    });
+  }, options);
+  observer.observe(element);
+};
+
+respondToVisibility(userMenu, function (visible) {
+  var x = document.getElementById('user_links');
+
+  if (!visible) {
+    x.style.display = 'block';
+    console.log('not visible');
+  } else {
+    x.style.display = 'none';
+  }
+});
+
 if (userMenu) {
   userMenu.addEventListener('click', function (e) {
     var x = document.getElementById('user_links');
@@ -9387,7 +9410,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64749" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60828" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

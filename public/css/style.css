@@ -1389,7 +1389,7 @@ main.main.main-careers div.text-container p.huge-pargraph {
   background-image: linear-gradient(to bottom right, #408ec673, #2c398a73);
 }
 .user-menu-icon {
-  visibility: hidden;
+  display: none;
 }
 main.main.main-aboutus .content h2 {
   font-size: 3rem;

@@ -122,6 +122,32 @@ if(bookBtn){
 const alertMessage = document.querySelector('body').dataset.alert;
 if(alertMessage) showAlert('success', alertMessage, 20);
 
+
+const respondToVisibility = function(element, callback) {
+    var options = {
+      root: document.documentElement
+    }
+  
+    var observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        callback(entry.intersectionRatio > 0);
+      });
+    }, options);
+  
+    observer.observe(element);
+}
+      
+respondToVisibility(userMenu, visible => { 
+    var x = document.getElementById('user_links');
+    if(!visible) {
+        x.style.display = 'block';
+        console.log('not visible');
+    }else{
+        x.style.display = 'none';
+    }
+  });
+
+
 if (userMenu){
     userMenu.addEventListener('click', e=>{
         var x = document.getElementById('user_links');
