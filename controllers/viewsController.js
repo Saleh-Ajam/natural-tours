@@ -15,7 +15,7 @@ exports.alerts = (req, res, next) => {
 exports.getOverview =catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const perPage = 6;
-  const numPages = Math.ceil(await Tour.find().count() / perPage);
+  const numPages = Math.ceil(await Tour.find().countDocuments() / perPage);
   let currentPage = req.params.pageNum || 1;
   currentPage = currentPage * 1;
   tours = await Tour.find().limit(perPage).skip((currentPage-1) * perPage);
