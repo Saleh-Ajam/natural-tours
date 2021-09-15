@@ -8627,7 +8627,7 @@ var logout = /*#__PURE__*/function () {
             res = _context2.sent;
 
             if (res.data.status = 'success') {
-              if (['/me', '/my-bookings', '/submit-user-data'].includes(location.pathname)) location.assign('/');else location.reload(true); // with true it will force the reload from the server and not from the browser cache
+              if (['/me', '/my-bookings', '/submit-user-data', '/my-reviews'].includes(location.pathname)) location.assign('/');else location.reload(true); // with true it will force the reload from the server and not from the browser cache
             }
 
             _context2.next = 10;
@@ -9410,7 +9410,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62583" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62199" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

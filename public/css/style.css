@@ -1464,6 +1464,20 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.review-container {
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 7rem;
+  justify-items: center;
+}
+.my-reviews-msg {
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  font-size: 1.5em;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;
@@ -1478,6 +1492,13 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
     font-size: 1.8rem;
     margin-bottom: 20px;
     margin-top: 10px;
+  }
+  main.main.main-my-reviews {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .review-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media only screen and (max-width: 62.5em) {
@@ -1687,6 +1708,10 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
     cursor: pointer;
     text-decoration: underline;
   }
+
+  .review-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media only screen and (max-width: 325px) {
@@ -1745,5 +1770,8 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   }
   section.compensation {
     padding: 10px;
+  }
+  .reviews__card {
+    width: 25rem;
   }
 }

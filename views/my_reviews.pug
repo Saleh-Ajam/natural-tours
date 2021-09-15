@@ -1,3 +1,5 @@
+extends base
+
 mixin reviewCard(review)
     .reviews__card
         .reviews__avatar
@@ -8,4 +10,13 @@ mixin reviewCard(review)
             each star in [1, 2, 3, 4, 5]
                 svg.reviews__star(class=`reviews__star--${review.rating >= star? 'active':'inactive'}`)
                     use(xlink:href='/img/icons.svg#icon-star')
-           
+
+block content
+    main.main.main-my-reviews
+        .review-container
+            -if(reviews.length > 0) 
+                each review in reviews
+                    +reviewCard(review)
+            -else 
+                .my-reviews-msg 
+                    p You do not have reviews ...
