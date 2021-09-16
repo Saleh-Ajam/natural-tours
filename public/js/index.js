@@ -4,7 +4,7 @@ import {login, logout, signup, forgotPassword, resetPassword} from './login';
 import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
-import {createReview} from './reviews';
+import {createReview, deleteReview} from './reviews';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
@@ -20,6 +20,7 @@ const userMenu = document.getElementById('user-menu-icon');
 const createReviewBtnTourDetail = document.getElementById('add-review-btn');
 // const createReviewForm = document.querySelector('.input-form-create-review');
 const createReviewBtnFormInput = document.getElementById('button-create-review');
+const deleteMyReviewBtn = document.getElementById('delete-my-review-btn');
 // VALUES
 
 // DELEGATION
@@ -183,4 +184,9 @@ if(createReviewBtnFormInput){
         // console.log(msg, rating, tourId, tourSlug);
         createReview(msg, rating, tourId, tourSlug); 
     });
+}
+if(deleteMyReviewBtn){
+    deleteMyReviewBtn.addEventListener('click', e=>{
+       deleteReview(deleteMyReviewBtn.dataset.reviewId);
+    })
 }

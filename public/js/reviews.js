@@ -12,7 +12,7 @@ export const createReview =async (review, rating, tour, tourSlug) =>{
         });
         
         if(res.data.status === 'success'){
-            showAlert('success','review is created successfuly!');
+            showAlert('success','Review is created successfuly!');
             window.setTimeout(() => {
                 location.assign(`/tour/${tourSlug}`);
             }, 5000);
@@ -20,5 +20,27 @@ export const createReview =async (review, rating, tour, tourSlug) =>{
 
     }catch(err){
         showAlert('error', err.response.data.message);
+    }
+}
+
+export const deleteReview = async(reviewId)=>{
+    var result = confirm("Are you sure you want to delete this review?");
+    if(result){
+        try{
+            const res = await axios({
+                method: 'DELETE',
+                url: `/api/v1/reviews/${reviewId}`
+            });
+            console.log(res);
+            if(res.status === 204){
+                showAlert('success','Review is deleted successfuly!');
+                window.setTimeout(() => {
+                    location.reload(true);
+                }, 5000);
+            }
+
+        }catch(err){
+            showAlert('error', err.response.data.message);
+        }
     }
 }
