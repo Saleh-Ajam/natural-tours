@@ -17,6 +17,7 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 const userMenu = document.getElementById('user-menu-icon');
+const createReviewBtn = document.getElementById('create-review-btn');
 
 // VALUES
 
@@ -137,18 +138,19 @@ const respondToVisibility = function(element, callback) {
     observer.observe(element);
 }
       
-respondToVisibility(userMenu, visible => { 
-    var x = document.getElementById('user_links');
-    if(!visible) {
-        x.style.display = 'block';
-        console.log('not visible');
-    }else{
-        x.style.display = 'none';
-    }
-  });
+
 
 
 if (userMenu){
+    respondToVisibility(userMenu, visible => { 
+        var x = document.getElementById('user_links');
+        if(!visible) {
+            x.style.display = 'block';
+            console.log('not visible');
+        }else{
+            x.style.display = 'none';
+        }
+    });
     userMenu.addEventListener('click', e=>{
         var x = document.getElementById('user_links');
         if (x.style.display === 'block') {
@@ -156,5 +158,11 @@ if (userMenu){
         } else {
             x.style.display = 'block';
         }
+    });
+}
+
+if(createReviewBtn){
+    createReviewBtn.addEventListener('click',e=>{
+        console.log('create review');
     });
 }

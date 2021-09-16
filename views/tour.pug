@@ -73,6 +73,9 @@ block content
         #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
     section.section-reviews
+        -if(user)
+            .create-revire-btn
+                button.btn.btn--white.span-all-rows#create-review-btn(data-tour-id=`${tour.id}` data-toggle='modal' data-target='#myModal') Add review
         .reviews
             each review in tour.reviews
                 +reviewCard(review)

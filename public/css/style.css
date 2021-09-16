@@ -228,6 +228,14 @@ body {
   background-color: #408ec6;
   color: #fff;
 }
+.btn--white {
+  background-color: whitesmoke;
+  color: #408ec6;
+}
+.create-revire-btn {
+  text-align: center;
+}
+
 .btn--blue::after {
   background-color: #408ec6;
 }
