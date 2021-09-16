@@ -1,24 +1,24 @@
 import axios from 'axios';
 import {showAlert} from './alerts';
 
-export const ccreateReview =(review, rating, tour, user) =>{
+export const createReview =async (review, rating, tour, tourSlug) =>{
     try{
         const res = await axios({
             method: 'POST',
-            url: '/api/v1/reviews',
+            url: `/api/v1/tours/${tour}/reviews`,
             data: {
-                review, rating, tour, user
+                review, rating
             }
         });
         
         if(res.data.status === 'success'){
             showAlert('success','review is created successfuly!');
             window.setTimeout(() => {
-                location.reload(true);
-            }, 1500);
+                location.assign(`/tour/${tourSlug}`);
+            }, 5000);
         }
 
     }catch(err){
-        showAlert('error', err.message);
+        showAlert('error', err.response.data.message);
     }
 }

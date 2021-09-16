@@ -31,7 +31,7 @@ export const logout = async () => {
             url: '/api/v1/users/logout'
         });
         if(res.data.status = 'success'){            
-            if (['/me','/my-bookings','/submit-user-data','/my-reviews'].includes(location.pathname))
+            if (['/me','/my-bookings','/submit-user-data','/my-reviews','/tour/the-sea-explorer/create-review'].includes(location.pathname))
                 location.assign('/');
             else location.reload(true); // with true it will force the reload from the server and not from the browser cache
         }

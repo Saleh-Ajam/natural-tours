@@ -232,7 +232,7 @@ body {
   background-color: whitesmoke;
   color: #408ec6;
 }
-.create-revire-btn {
+.create-review-btn {
   text-align: center;
 }
 
@@ -1218,7 +1218,7 @@ body {
 .login-form,
 .reset-password-form,
 .signup-form,
-.login-contactus,
+.input-form,
 .forgot-password-form {
   margin: 0 auto;
   max-width: 55rem;
@@ -1509,6 +1509,46 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
 .review-delete-edit-btns button:hover {
   cursor: pointer;
 }
+.input-form .rating-container {
+  width: 100%;
+  display: inline-block;
+}
+.input-form .rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.input-form .rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.input-form .rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.input-form .rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.input-form .rate > input:checked ~ label {
+  color: #408ec6;
+}
+.input-form .rate:not(:checked) > label:hover,
+.input-form .rate:not(:checked) > label:hover ~ label {
+  color: #67acdd;
+}
+.input-form .rate > input:checked + label:hover,
+.input-form .rate > input:checked + label:hover ~ label,
+.input-form .rate > input:checked ~ label:hover,
+.input-form .rate > input:checked ~ label:hover ~ label,
+.input-form .rate > label:hover ~ input:checked ~ label {
+  color: #377cad;
+}
+
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;
@@ -1691,7 +1731,7 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   main.main.main-login,
   main.main.main-reset-password,
   main.main.main-signup,
-  main.main.main-contactus,
+  main.main.main-input-form,
   main.main-forgot-password,
   main.main-forgot-careers {
     padding: 0;

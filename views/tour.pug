@@ -74,8 +74,8 @@ block content
 
     section.section-reviews
         -if(user)
-            .create-revire-btn
-                button.btn.btn--white.span-all-rows#create-review-btn(data-tour-id=`${tour.id}` data-toggle='modal' data-target='#myModal') Add review
+            .create-review-btn
+                button.btn.btn--white.span-all-rows#add-review-btn(data-tour-slug=`${tour.slug}`) Add review
         .reviews
             each review in tour.reviews
                 +reviewCard(review)

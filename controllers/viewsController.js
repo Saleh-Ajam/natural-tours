@@ -88,9 +88,31 @@ exports.getContactUsForm = (req, res, next) => {
   )
   .render('input_form',{
     title: 'Contact us',
-    firstInput:'email'
+    firstInputTitle:'Contact us',
+    firstInput:'email',
+    buttonText: 'Send',
+    formType: 'contactus',
+    buttonId: 'send-feedback'
   })
 };
+
+exports.getCreateReviewForm = catchAsync(async(req, res, next) => {
+  const tour = await Tour.findOne({slug: req.params.tourSlug});
+    res.status(200).set(
+    'Content-Security-Policy',
+    "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+  )
+  .render('input_form',{
+    title: 'Create review',
+    firstInputTitle:'Adding Review',
+    firstInput:'rating',
+    buttonText: 'Submit',
+    formType: 'create-review',
+    buttonId: 'create-review',
+    tourId:tour.id,
+    tourSlug: req.params.tourSlug
+  })
+});
 
 exports.getForgotPasswordForm = (req, res, next) => {
   if(res.locals.user) return next(new AppError('You are already logged in.', 403));

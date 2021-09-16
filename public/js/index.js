@@ -4,7 +4,7 @@ import {login, logout, signup, forgotPassword, resetPassword} from './login';
 import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
-
+import {createReview} from './reviews';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
@@ -17,8 +17,9 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 const userMenu = document.getElementById('user-menu-icon');
-const createReviewBtn = document.getElementById('create-review-btn');
-
+const createReviewBtnTourDetail = document.getElementById('add-review-btn');
+// const createReviewForm = document.querySelector('.input-form-create-review');
+const createReviewBtnFormInput = document.getElementById('button-create-review');
 // VALUES
 
 // DELEGATION
@@ -161,8 +162,25 @@ if (userMenu){
     });
 }
 
-if(createReviewBtn){
-    createReviewBtn.addEventListener('click',e=>{
-        console.log('create review');
+if(createReviewBtnTourDetail){
+    const tourSlug = createReviewBtnTourDetail.dataset.tourSlug;
+    createReviewBtnTourDetail.addEventListener('click',e=>{
+        location.assign(`/tour/${tourSlug}/create-review`);
+    });
+}
+// if(createReviewForm){
+//     const rating = document.querySelector('input[name="rate"]:checked')? document.querySelector('input[name="rate"]:checked').value : 0;
+//     console.log(rating); 
+//     console.log('hi')
+// }
+if(createReviewBtnFormInput){
+    createReviewBtnFormInput.addEventListener('click', e=>{
+        e.preventDefault();
+        const tourId = createReviewBtnFormInput.dataset.tourId;
+        const tourSlug = createReviewBtnFormInput.dataset.tourSlug;
+        const rating = document.querySelector('input[name="rate"]:checked')? document.querySelector('input[name="rate"]:checked').value : 0;
+        const msg = document.getElementById('edit-text').value;
+        // console.log(msg, rating, tourId, tourSlug);
+        createReview(msg, rating, tourId, tourSlug); 
     });
 }

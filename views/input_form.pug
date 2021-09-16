@@ -1,17 +1,37 @@
 extends base
 
 block content
-    main.main.main-contactus
-        .login-contactus
-            h2.heading-secondary.ma-bt-lg Contact us
-            form.form.form--contactus
-                -if(firstInput === 'email')
-                    .form__group
-                        label.form__label(for='email') Email address
-                        input#email.form__input(type='email', placeholder='you@example.com', required)
-                -if(firstInput === 'rating')
-                .form__group.ma-bt-md
-                    label.form__label(for='edit-text') Message
-                    textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8')
-                .form__group
-                    button.btn.btn--blue Send
+    main.main.main-input-form
+        div(class=`input-form-${formType}`)
+            .input-form
+                h2.heading-secondary.ma-bt-lg #{firstInputTitle}
+                form.form
+                    -if(firstInput === 'email')
+                        .form__group
+                            label.form__label(for='email') Email address
+                            input#email.form__input(type='email', placeholder='you@example.com', required)
+                    -if(firstInput === 'rating')
+                        .form__group
+                            label.form__label Rating
+                            .rating-container
+                                .rate
+                                    input#star5(type='radio' name='rate' value='5')
+                                    label(for='star5' title='text') 5 stars
+                                    input#star4(type='radio' name='rate' value='4')
+                                    label(for='star4' title='text') 4 stars
+                                    input#star3(type='radio' name='rate' value='3')
+                                    label(for='star3' title='text') 3 stars
+                                    input#star2(type='radio' name='rate' value='2')
+                                    label(for='star2' title='text') 2 stars
+                                    input#star1(type='radio' name='rate' value='1')
+                                    label(for='star1' title='text') 1 star
+
+                    .form__group.ma-bt-md
+                        label.form__label(for='edit-text') Message
+                        textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8')
+                    -if(firstInput === 'rating')
+                        .form__group
+                            button.btn.btn--blue(id=`button-${buttonId}` data-tour-id=`${tourId}` data-tour-slug=`${tourSlug}`) #{buttonText}
+                    -if(firstInput === 'email')
+                        .form__group
+                            button.btn.btn--blue(id=`button-${buttonId}`) #{buttonText}
