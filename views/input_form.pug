@@ -14,21 +14,37 @@ block content
                         .form__group
                             label.form__label Rating
                             .rating-container
-                                .rate
-                                    input#star5(type='radio' name='rate' value='5')
-                                    label(for='star5' title='text') 5 stars
-                                    input#star4(type='radio' name='rate' value='4')
-                                    label(for='star4' title='text') 4 stars
-                                    input#star3(type='radio' name='rate' value='3')
-                                    label(for='star3' title='text') 3 stars
-                                    input#star2(type='radio' name='rate' value='2')
-                                    label(for='star2' title='text') 2 stars
-                                    input#star1(type='radio' name='rate' value='1')
-                                    label(for='star1' title='text') 1 star
-
-                    .form__group.ma-bt-md
-                        label.form__label(for='edit-text') Message
-                        textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8')
+                                -if(formType !== 'edit-review')
+                                    .rate
+                                        input#star5(type='radio' name='rate' value='5')
+                                        label(for='star5' title='text') 5 stars
+                                        input#star4(type='radio' name='rate' value='4')
+                                        label(for='star4' title='text') 4 stars
+                                        input#star3(type='radio' name='rate' value='3')
+                                        label(for='star3' title='text') 3 stars
+                                        input#star2(type='radio' name='rate' value='2')
+                                        label(for='star2' title='text') 2 stars
+                                        input#star1(type='radio' name='rate' value='1')
+                                        label(for='star1' title='text') 1 star
+                                -if(formType === 'edit-review')
+                                    .rate
+                                        each ratingValue in  [5,4,3,2,1]
+                                            -if(ratingValue< review.rating)
+                                                input(id=`star${ratingValue}` type='radio' name='rate' value=`${ratingValue}`)
+                                                label(for=`star${ratingValue}` title='text') #{ratingValue} stars
+                                            -if(ratingValue>= review.rating) 
+                                                input(id=`star${ratingValue}` type='radio' name='rate' value=`${ratingValue}` checked)
+                                                label(for=`star${ratingValue}` title='text') #{ratingValue} stars
+                                            
+                                                      
+                    -if(formType === 'edit-review')
+                        .form__group.ma-bt-md
+                            label.form__label(for='edit-text') Message
+                            textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8' data-review-id=`${review.id}`) #{review.review}
+                    -if(formType !== 'edit-review')
+                        .form__group.ma-bt-md
+                            label.form__label(for='edit-text') Message
+                            textarea#edit-text.form__input(rows="7", cols="50", placeholder='Your message', required, minlength='8')
                     -if(firstInput === 'rating')
                         .form__group
                             button.btn.btn--blue(id=`button-${buttonId}` data-tour-id=`${tourId}` data-tour-slug=`${tourSlug}`) #{buttonText}

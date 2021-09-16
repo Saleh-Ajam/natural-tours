@@ -12,7 +12,7 @@ mixin reviewCard(review)
                     use(xlink:href='/img/icons.svg#icon-star')
         .review-delete-edit-btns
             button.delete-btn#delete-my-review-btn(data-review-id=`${review.id}`) delete
-            button.edit-btn edit
+            button.edit-btn#edit-my-review-btn(data-review=`${JSON.stringify(review)}`) edit
 
 block content
     main.main.main-my-reviews

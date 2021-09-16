@@ -44,3 +44,23 @@ export const deleteReview = async(reviewId)=>{
         }
     }
 }
+
+export const editReview = async(rating, review,reviewId) => {
+    try{
+        const res = await axios({
+            method:'PATCH',
+            url: `/api/v1/reviews/${reviewId}`,
+            data: {
+                rating, review
+            }
+        });
+        if(res.status === 200){
+            showAlert('success', 'Yor review is updated successfully');
+            setTimeout(()=>{
+                location.assign('/my-reviews');
+            },5000)
+        }
+    }catch(err){
+        showAlert('error', err.response.data.message);
+    }
+}

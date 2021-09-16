@@ -4,7 +4,8 @@ import {login, logout, signup, forgotPassword, resetPassword} from './login';
 import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
-import {createReview, deleteReview} from './reviews';
+import {createReview, deleteReview, editReview} from './reviews';
+import {getTour} from './tours';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
@@ -21,6 +22,9 @@ const createReviewBtnTourDetail = document.getElementById('add-review-btn');
 // const createReviewForm = document.querySelector('.input-form-create-review');
 const createReviewBtnFormInput = document.getElementById('button-create-review');
 const deleteMyReviewBtn = document.getElementById('delete-my-review-btn');
+const editMyReviewBtnMyReviews = document.getElementById('edit-my-review-btn');
+const editMyReviewButtonFormInput = document.getElementById('button-edit-review');
+
 // VALUES
 
 // DELEGATION
@@ -169,11 +173,6 @@ if(createReviewBtnTourDetail){
         location.assign(`/tour/${tourSlug}/create-review`);
     });
 }
-// if(createReviewForm){
-//     const rating = document.querySelector('input[name="rate"]:checked')? document.querySelector('input[name="rate"]:checked').value : 0;
-//     console.log(rating); 
-//     console.log('hi')
-// }
 if(createReviewBtnFormInput){
     createReviewBtnFormInput.addEventListener('click', e=>{
         e.preventDefault();
@@ -188,5 +187,24 @@ if(createReviewBtnFormInput){
 if(deleteMyReviewBtn){
     deleteMyReviewBtn.addEventListener('click', e=>{
        deleteReview(deleteMyReviewBtn.dataset.reviewId);
+    })
+}
+if(editMyReviewBtnMyReviews){
+    editMyReviewBtnMyReviews.addEventListener('click', e=> {
+        e.preventDefault();
+        const review = JSON.parse(editMyReviewBtnMyReviews.dataset.review);
+        const tourId = review.tour;
+        getTour(tourId).then(tour =>{
+           location.assign(`/tour/${tour.slug}/edit-review`)
+        });
+    });
+}
+
+if(editMyReviewButtonFormInput){
+    editMyReviewButtonFormInput.addEventListener('click', e=>{
+        e.preventDefault();
+        const rating = document.querySelector('input[name="rate"]:checked')? document.querySelector('input[name="rate"]:checked').value : 0;
+        const msg = document.getElementById('edit-text').value;
+        editReview(rating, msg, document.getElementById('edit-text').dataset.reviewId);
     })
 }

@@ -16,6 +16,7 @@ router.get('/forgot-password', authController.isLoggedIn, viewsController.getFor
 router.get('/reset-password/:resetToken', authController.isLoggedIn, viewsController.getResetPasswordForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-reviews', authController.protect, viewsController.getMyReviews);
+router.get('/tour/:tourSlug/edit-review', authController.protect, viewsController.getEditReviewForm);
 router.get('/tour/:tourSlug/create-review', authController.protect, viewsController.getCreateReviewForm);
 router.get('/careers', authController.isLoggedIn, viewsController.getCareers);
 router.get('/my-bookings', authController.protect, viewsController.getMyTours);
