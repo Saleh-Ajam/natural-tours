@@ -15,6 +15,9 @@ mixin pagination(pages, current)
 
 block content 
     main.main
+        .search-container
+            input#searchbar( type='text' name='search' placeholder='Search tours..')
+            button#search-btn search
         .card-container
         
             each tour in tours

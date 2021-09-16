@@ -24,7 +24,7 @@ const createReviewBtnFormInput = document.getElementById('button-create-review')
 const deleteMyReviewBtn = document.getElementById('delete-my-review-btn');
 const editMyReviewBtnMyReviews = document.getElementById('edit-my-review-btn');
 const editMyReviewButtonFormInput = document.getElementById('button-edit-review');
-
+const searchButton = document.getElementById('search-btn');
 // VALUES
 
 // DELEGATION
@@ -207,4 +207,11 @@ if(editMyReviewButtonFormInput){
         const msg = document.getElementById('edit-text').value;
         editReview(rating, msg, document.getElementById('edit-text').dataset.reviewId);
     })
+}
+if(searchButton) {
+    searchButton.addEventListener('click', e=>{
+        e.preventDefault();
+        const searchQuery = document.getElementById('searchbar').value;
+        location.assign(`/tours/search?name=${searchQuery}`);
+    });
 }

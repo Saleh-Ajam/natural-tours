@@ -1548,7 +1548,46 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
 .input-form .rate > label:hover ~ input:checked ~ label {
   color: #377cad;
 }
+.search-container {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+#searchbar {
+  margin-right: 1%;
+  border: 2px solid #408ec6;
+  padding: 7px;
+  color: #408ec6;
+  border-radius: 8px;
+}
 
+input[id='searchbar'] {
+  width: 30%;
+
+  -webkit-transition: width 0.15s ease-in-out;
+
+  transition: width 0.15s ease-in-out;
+}
+
+input[id='searchbar']:focus {
+  outline: none;
+}
+input[id='searchbar']::placeholder {
+  color: #67acdd;
+}
+#search-btn {
+  padding: 8px;
+  background-color: #408ec6;
+  color: whitesmoke;
+  border-radius: 3px;
+  border: 0;
+}
+#search-btn:hover {
+  cursor: pointer;
+}
+#search-btn:active {
+  background-color: #377cad;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;

@@ -20,5 +20,6 @@ router.get('/tour/:tourSlug/edit-review', authController.protect, viewsControlle
 router.get('/tour/:tourSlug/create-review', authController.protect, viewsController.getCreateReviewForm);
 router.get('/careers', authController.isLoggedIn, viewsController.getCareers);
 router.get('/my-bookings', authController.protect, viewsController.getMyTours);
+router.get('/tours/search', authController.isLoggedIn,  viewsController.getSearchResult);
 router.post('/submit-user-data', authController.protect, viewsController.updateUserData);
 module.exports = router;
