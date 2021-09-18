@@ -1486,12 +1486,28 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
   width: 100%;
   font-size: 1.5em;
 }
+.review-delete-edit-btns {
+  margin-top: 20px;
+}
 .review-delete-edit-btns button {
   color: whitesmoke;
   margin: 15px;
   width: 50px;
   height: 25px;
   border-radius: 5px;
+  font-size: 1.5em;
+  border: 0;
+}
+.review-delete-edit-btns a {
+  padding: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-decoration: none;
+  color: whitesmoke;
+  margin: 15px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 1.5em;
   border: 0;
 }
 .review-delete-edit-btns button.delete-btn {
@@ -1500,10 +1516,10 @@ main.main.main-aboutus section.section-guides .overview-box__detail {
 .review-delete-edit-btns button.delete-btn:active {
   background-color: #e03a37;
 }
-.review-delete-edit-btns button.edit-btn {
+.review-delete-edit-btns a.edit-btn {
   background-color: #408ec6;
 }
-.review-delete-edit-btns button.edit-btn:active {
+.review-delete-edit-btns a.edit-btn:active {
   background-color: #1982cc;
 }
 .review-delete-edit-btns button:hover {

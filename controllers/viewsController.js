@@ -205,7 +205,9 @@ exports.getMyTours = catchAsync(async(req, res, next) => {
 
 exports.getMyReviews = catchAsync(async(req, res, next) => {
 
-    const reviews = await Review.find({user: req.user.id })
+    const reviews = await Review.find({user: req.user.id }).populate({
+        path: 'tour'
+      })
 
 
     res.status(200).set(

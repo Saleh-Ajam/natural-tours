@@ -9459,8 +9459,7 @@ var userMenu = document.getElementById('user-menu-icon');
 var createReviewBtnTourDetail = document.getElementById('add-review-btn'); // const createReviewForm = document.querySelector('.input-form-create-review');
 
 var createReviewBtnFormInput = document.getElementById('button-create-review');
-var deleteMyReviewBtn = document.getElementById('delete-my-review-btn');
-var editMyReviewBtnMyReviews = document.getElementById('edit-my-review-btn');
+var deleteMyReviewBtns = document.getElementsByClassName('delete-my-review-btn');
 var editMyReviewButtonFormInput = document.getElementById('button-edit-review');
 var searchButton = document.getElementById('search-btn'); // VALUES
 // DELEGATION
@@ -9651,21 +9650,16 @@ if (createReviewBtnFormInput) {
   });
 }
 
-if (deleteMyReviewBtn) {
-  deleteMyReviewBtn.addEventListener('click', function (e) {
-    (0, _reviews.deleteReview)(deleteMyReviewBtn.dataset.reviewId);
-  });
-}
+if (deleteMyReviewBtns) {
+  var _loop = function _loop(i) {
+    deleteMyReviewBtns[i].onclick = function () {
+      return (0, _reviews.deleteReview)(deleteMyReviewBtns[i].dataset.reviewId);
+    };
+  };
 
-if (editMyReviewBtnMyReviews) {
-  editMyReviewBtnMyReviews.addEventListener('click', function (e) {
-    e.preventDefault();
-    var review = JSON.parse(editMyReviewBtnMyReviews.dataset.review);
-    var tourId = review.tour;
-    (0, _tours.getTour)(tourId).then(function (tour) {
-      location.assign("/tour/".concat(tour.slug, "/edit-review"));
-    });
-  });
+  for (var i = 0; i < deleteMyReviewBtns.length; i++) {
+    _loop(i);
+  }
 }
 
 if (editMyReviewButtonFormInput) {
@@ -9712,7 +9706,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53747" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55627" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

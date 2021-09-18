@@ -21,8 +21,7 @@ const userMenu = document.getElementById('user-menu-icon');
 const createReviewBtnTourDetail = document.getElementById('add-review-btn');
 // const createReviewForm = document.querySelector('.input-form-create-review');
 const createReviewBtnFormInput = document.getElementById('button-create-review');
-const deleteMyReviewBtn = document.getElementById('delete-my-review-btn');
-const editMyReviewBtnMyReviews = document.getElementById('edit-my-review-btn');
+const deleteMyReviewBtns = document.getElementsByClassName('delete-my-review-btn');
 const editMyReviewButtonFormInput = document.getElementById('button-edit-review');
 const searchButton = document.getElementById('search-btn');
 // VALUES
@@ -184,21 +183,11 @@ if(createReviewBtnFormInput){
         createReview(msg, rating, tourId, tourSlug); 
     });
 }
-if(deleteMyReviewBtn){
-    deleteMyReviewBtn.addEventListener('click', e=>{
-       deleteReview(deleteMyReviewBtn.dataset.reviewId);
-    })
+if(deleteMyReviewBtns){
+    for (let i=0 ; i< deleteMyReviewBtns.length; i++)
+        deleteMyReviewBtns[i].onclick=()=>deleteReview(deleteMyReviewBtns[i].dataset.reviewId);
 }
-if(editMyReviewBtnMyReviews){
-    editMyReviewBtnMyReviews.addEventListener('click', e=> {
-        e.preventDefault();
-        const review = JSON.parse(editMyReviewBtnMyReviews.dataset.review);
-        const tourId = review.tour;
-        getTour(tourId).then(tour =>{
-           location.assign(`/tour/${tour.slug}/edit-review`)
-        });
-    });
-}
+
 
 if(editMyReviewButtonFormInput){
     editMyReviewButtonFormInput.addEventListener('click', e=>{
