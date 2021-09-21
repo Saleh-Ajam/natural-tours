@@ -14,6 +14,7 @@ router.get('/contactus', authController.isLoggedIn, viewsController.getContactUs
 router.get('/aboutus', authController.isLoggedIn, viewsController.getAboutUs);
 router.get('/forgot-password', authController.isLoggedIn, viewsController.getForgotPasswordForm);
 router.get('/reset-password/:resetToken', authController.isLoggedIn, viewsController.getResetPasswordForm);
+router.get('/set-password/:setToken', authController.isLoggedIn, viewsController.getSetPasswordForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-reviews', authController.protect, viewsController.getMyReviews);
 router.get('/tour/:tourSlug/edit-review', authController.protect, viewsController.getEditReviewForm);

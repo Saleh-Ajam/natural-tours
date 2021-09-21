@@ -27,13 +27,11 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please provide a paswword'],
         minlength: 8,
         select: false
     },
     passwordConfirm: {
         type: String,
-        required: [true, 'Please confirm your password'],
         validate: {
             // This is only works on CREATE or SAVE!!!
             validator: function(el) { // el refer to passwordConfirm
@@ -45,7 +43,14 @@ const userSchema = new mongoose.Schema({
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
+    passwordSetToken: String,
+    passwordSetExpires: Date,
     active: {
+        type: Boolean,
+        default: true,
+        select: false
+    },
+    new: { // for signup
         type: Boolean,
         default: true,
         select: false
@@ -97,6 +102,12 @@ userSchema.methods.createPasswordResetToken = function () {
 
     // console.log({resetToken}, this.passwordResetToken);
     return resetToken;
+}
+userSchema.methods.createPasswordSetToken = function () {
+    const setToken = crypto.randomBytes(32).toString('hex');
+    this.passwordSetToken = crypto.createHash('sha256').update(setToken).digest('hex');
+    this.passwordSetExpires = Date.now() + 10 * 60 * 1000;
+    return setToken;
 }
 
 const User = mongoose.model('User', userSchema);

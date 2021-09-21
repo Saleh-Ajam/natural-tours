@@ -48,7 +48,7 @@ export const signup = async (creds) => {
             data: {...creds}
         });
         if(res.data.status = 'success'){            
-            showAlert('success','Sign up successfuly!');
+            showAlert('success','Please check your email inbox!');
             window.setTimeout(() => {
                 location.assign('/');
             }, 5000); 
@@ -84,6 +84,23 @@ export const resetPassword = async(token, password, passwordConfirm) => {
         });
         if(res.data.status = 'success'){            
             showAlert('success','Password Changed Successfully');
+            window.setTimeout(() => {
+                location.assign('/');
+            }, 5000); 
+        }
+    }catch(err){
+        showAlert('error', err.response.data.message);
+    }
+}
+export const setPassword = async(token, password, passwordConfirm) => {
+    try{
+        const res = await axios({
+            method: 'PATCH',
+            url: `/api/v1/users/setPassword/${token}`,
+            data: {password, passwordConfirm}
+        });
+        if(res.data.status = 'success'){            
+            showAlert('success','Password is set Successfully');
             window.setTimeout(() => {
                 location.assign('/');
             }, 5000); 

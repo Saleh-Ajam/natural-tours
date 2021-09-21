@@ -35,14 +35,59 @@ exports.signup = catchAsync(async (req, res, next) => {
     const newUser = await User.create({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
-        passwordConfirm: req.body.passwordConfirm,
-        passwordChangedAt: req.body.passwordChangedAt,
-        role: req.body.role
     });
-    const url = `${req.protocol}://${req.get('host')}/me`;
-    await new Email(newUser, url).sendWelcome();
-    createAndSendToken(newUser, 201, req, res);// 201 created
+   // 2) Generate the random reset token
+   const setToken = newUser.createPasswordSetToken();
+   await newUser.save({validateBeforeSave: false });
+   
+   // 3) Send it to user's email
+   try{
+       // set password url
+       const setPasswordUrl = `${req.protocol}://${req.get('host')}/set-password/${setToken}`;
+       await new Email(newUser, setPasswordUrl).sendSetPasswordSignup();
+
+      res.status(200).json({
+          status: 'success',
+          message: 'Token sent to email!'
+      });
+   }catch (err) {
+        newUser.passwordSetToken = undefined;
+        newUser.passwordSetExpires = undefined;
+       await newUser.save({validateBeforeSave: false });
+       return next(new AppError('There was an error sending the email. Try again later!', 500));
+   }
+
+});
+
+exports.setPassword = catchAsync(async (req, res, next) => {
+    // 1) get user based on the token
+    const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+
+    const user = await User.findOne({passwordSetToken: hashedToken, passwordSetExpires: {$gt: Date.now()}});
+
+    // 2) If token has not expired, and there is user, set the new password
+    if(!user) {
+        return next(new AppError('Token is invalid or has expired', 400));
+    }
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    user.passwordChangedAt= req.body.passwordChangedAt;
+    user.new = false;
+    user.passwordSetToken = undefined;
+    user.passwordSetExpires = undefined;
+    // use save to turn on the validators
+    await user.save();
+    // here we don't want to turn off the validator we want to sure that password is equal to passwordConfirm (validator will do that automatically)
+    // 3) Update changePasswordAt property for the user
+    // we did this step using pre save middleware in userModel.js
+    // 4) Log the user in, send JWT
+    
+    if(user) {
+        const url = `${req.protocol}://${req.get('host')}/me`;
+        await new Email(user, url).sendWelcome();
+        createAndSendToken(user, 201, req, res);
+    }
+
 });
 
 exports.login = catchAsync(async (req, res, next) => {

@@ -139,8 +139,9 @@ exports.getForgotPasswordForm = (req, res, next) => {
     'Content-Security-Policy',
     "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
   )
-  .render('forgot_password',{
-    title: 'Forgot password'
+  .render('enter_email_form',{
+    title: 'Forgot password',
+    type: 'forgot--password'
   })
 };
 
@@ -151,8 +152,21 @@ exports.getResetPasswordForm = (req, res, next) => {
     'Content-Security-Policy',
     "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
   )
-  .render('reset_password',{
-    title: 'Reset password'
+  .render('password_form',{
+    title: 'Reset password',
+    type: 'reset'
+  })
+};
+exports.getSetPasswordForm = (req, res, next) => {
+  if(res.locals.user) return next(new AppError('You are already logged in.', 403));
+
+  res.status(200).set(
+    'Content-Security-Policy',
+    "default-src 'self' https://*.mapbox.com https://*.stripe.com/ ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdnjs.cloudflare.com https://api.mapbox.com https://*.stripe.com/ 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+  )
+  .render('password_form',{
+    title: 'Set password',
+    type: 'set'
   })
 };
 

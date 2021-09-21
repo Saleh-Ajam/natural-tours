@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import {displayMap} from './mapbox';
-import {login, logout, signup, forgotPassword, resetPassword} from './login';
+import {login, logout, signup, forgotPassword, resetPassword, setPassword} from './login';
 import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
@@ -11,8 +11,9 @@ const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
 const contactUsForm = document.querySelector('.form--contactus');
-const forgotPasswordForm = document.querySelector('.form--forgot--password');
+const forgotPasswordForm = document.querySelector('.form--enter--email--forgot--password');
 const resetPasswordForm = document.querySelector('.form--reset--password');
+const setPasswordForm = document.querySelector('.form--set--password');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -53,12 +54,11 @@ if(signupForm){
     signupForm.addEventListener('submit', e => {
         e.preventDefault();
         const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('password-confirm').value;
         const name = document.getElementById('name').value;
-        signup({name, email, password, passwordConfirm});
+        signup({name, email});
     });
 }
+
 
 if(forgotPasswordForm){
     forgotPasswordForm.addEventListener('submit', e => {
@@ -74,6 +74,15 @@ if(resetPasswordForm){
         const passwordConfirm = document.getElementById('confirm-password').value;
         const token = location.pathname.split('/')[location.pathname.split('/').length-1];
         resetPassword(token, password, passwordConfirm);
+    });
+}
+if(setPasswordForm){
+    setPasswordForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('confirm-password').value;
+        const token = location.pathname.split('/')[location.pathname.split('/').length-1];
+        setPassword(token, password, passwordConfirm);
     });
 }
 if(logOutBtn) logOutBtn.addEventListener('click', logout)

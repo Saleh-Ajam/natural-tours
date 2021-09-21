@@ -8540,7 +8540,7 @@ exports.showAlert = showAlert;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resetPassword = exports.forgotPassword = exports.signup = exports.logout = exports.login = void 0;
+exports.setPassword = exports.resetPassword = exports.forgotPassword = exports.signup = exports.logout = exports.login = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8672,7 +8672,7 @@ var signup = /*#__PURE__*/function () {
             res = _context3.sent;
 
             if (res.data.status = 'success') {
-              (0, _alerts.showAlert)('success', 'Sign up successfuly!');
+              (0, _alerts.showAlert)('success', 'Please check your email inbox!');
               window.setTimeout(function () {
                 location.assign('/');
               }, 5000);
@@ -8801,6 +8801,57 @@ var resetPassword = /*#__PURE__*/function () {
 }();
 
 exports.resetPassword = resetPassword;
+
+var setPassword = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(token, password, passwordConfirm) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.prev = 0;
+            _context6.next = 3;
+            return (0, _axios.default)({
+              method: 'PATCH',
+              url: "/api/v1/users/setPassword/".concat(token),
+              data: {
+                password: password,
+                passwordConfirm: passwordConfirm
+              }
+            });
+
+          case 3:
+            res = _context6.sent;
+
+            if (res.data.status = 'success') {
+              (0, _alerts.showAlert)('success', 'Password is set Successfully');
+              window.setTimeout(function () {
+                location.assign('/');
+              }, 5000);
+            }
+
+            _context6.next = 10;
+            break;
+
+          case 7:
+            _context6.prev = 7;
+            _context6.t0 = _context6["catch"](0);
+            (0, _alerts.showAlert)('error', _context6.t0.response.data.message);
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[0, 7]]);
+  }));
+
+  return function setPassword(_x8, _x9, _x10) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+exports.setPassword = setPassword;
 },{"axios":"../../node_modules/axios/index.js","./alerts":"alerts.js"}],"updateSettings.js":[function(require,module,exports) {
 "use strict";
 
@@ -9449,8 +9500,9 @@ var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
 var signupForm = document.querySelector('.form--signup');
 var contactUsForm = document.querySelector('.form--contactus');
-var forgotPasswordForm = document.querySelector('.form--forgot--password');
+var forgotPasswordForm = document.querySelector('.form--enter--email--forgot--password');
 var resetPasswordForm = document.querySelector('.form--reset--password');
+var setPasswordForm = document.querySelector('.form--set--password');
 var logOutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
@@ -9489,14 +9541,10 @@ if (signupForm) {
   signupForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var passwordConfirm = document.getElementById('password-confirm').value;
     var name = document.getElementById('name').value;
     (0, _login.signup)({
       name: name,
-      email: email,
-      password: password,
-      passwordConfirm: passwordConfirm
+      email: email
     });
   });
 }
@@ -9516,6 +9564,16 @@ if (resetPasswordForm) {
     var passwordConfirm = document.getElementById('confirm-password').value;
     var token = location.pathname.split('/')[location.pathname.split('/').length - 1];
     (0, _login.resetPassword)(token, password, passwordConfirm);
+  });
+}
+
+if (setPasswordForm) {
+  setPasswordForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('confirm-password').value;
+    var token = location.pathname.split('/')[location.pathname.split('/').length - 1];
+    (0, _login.setPassword)(token, password, passwordConfirm);
   });
 }
 
@@ -9706,7 +9764,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55627" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53053" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
