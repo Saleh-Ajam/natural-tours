@@ -1,0 +1,118 @@
+extends base
+
+block content
+    main.main.main-input-form
+        div(class=`input-form-manage-create-tour`)
+            .input-form
+                h2.heading-secondary.ma-bt-lg Create Tour
+                .required-desc-manage-create-tour
+                    p.required-desc-manage-create-tour-text  * : required
+                form.form#create-tour-form
+                    .form__group
+                        label.form__label(for='manage-create-tour-name') Name 
+                            .astric_required *
+                        input#manage-create-tour-name.form__input(type='text', placeholder='Tour Name...', required)
+                    .form__group
+                        label.form__label(for='manage-create-tour-duartion') Duration 
+                            .astric_required *
+                        input#manage-create-tour-duration.form__input(type='number',  placeholder='Tour Duration...', required)
+                    .form__group
+                        label.form__label(for='manage-create-tour-max-group-size') Max Group Size 
+                            .astric_required *
+                        input#manage-create-tour-max-group-size.form__input(type='number',  placeholder='Tour Max Group Size...', required)
+                    .form__group
+                        label.form__label(for='manage-create-tour-difficulty') Difficulty 
+                            .astric_required *
+                        select#manage-create-tour-difficulty.form__input(name="manage-create-tour-difficulty" form="create-tour-form",  required)
+                            option(value="easy") Easy
+                            option(value="medium") Medium
+                            option(value="difficult") Difficult
+                    .form__group
+                        label.form__label(for='manage-create-tour-price') Price 
+                            .astric_required *
+                        input#manage-create-tour-price.form__input(type='number', placeholder='Price...', step="0.01", required)
+                    .form__group
+                        label.form__label(for='manage-create-tour-price-discount') Price Discount 
+                        input#manage-create-tour-price-discount.form__input(type='number', placeholder='Price Discount...' , step="0.01")
+                    .form__group.ma-bt-md
+                        label.form__label(for='manage-create-tour-sumamry') Summary 
+                            .astric_required *
+                        textarea#manage-create-tour-sumamry.form__input(rows="7", cols="50", placeholder='Summary...', required, minlength='8')
+                    .form__group.ma-bt-md
+                        label.form__label(for='manage-create-tour-description') Description 
+                        textarea#manage-create-tour-description.form__input(rows="7", cols="50", placeholder='Summary...', minlength='8')
+                    .form__group
+                        label.form__label(for='manage-create-tour-lead-guides') Lead Guide 
+                            .astric_required *
+                        select#manage-create-tour-lead-guides.form__input(name="manage-create-tour-lead-guides" form="create-tour-form",  required)
+                            each guide in leadGuides
+                                option(value=`${guide.id}`) #{guide.name}
+                    .form__group
+                        label.form__label(for='manage-create-tour-first-guide') First Guide 
+                            .astric_required *
+                        select#manage-create-tour-first-guide.form__input(name="manage-create-tour-first-guide" form="create-tour-form",  required)
+                            each guide in guides
+                                option(value=`${guide.id}`) #{guide.name}
+                    .form__group
+                        label.form__label(for='manage-create-tour-second-guide') Second Guide (optional)
+                        select#manage-create-tour-second-guide.form__input(name="manage-create-tour-second-guide" form="create-tour-form")
+                            option(value='' , selected, disabled, hidden) Choose Second Guide
+                            each guide in guides
+                                option(value=`${guide.id}`) #{guide.name}
+                    .form__group
+                        label.form__label(for='manage-create-tour-first-date') First Date
+                            .astric_required *
+                        input#manage-create-tour-first-date.form__input(type='date', required)
+                    
+                    .form__group
+                        label.form__label(for='manage-create-tour-second-date') Second Date
+                        input#manage-create-tour-second-date.form__input(type='date')
+                                        
+                    .form__group
+                        label.form__label(for='manage-create-tour-third-date') Third Date
+                        input#manage-create-tour-third-date.form__input(type='date',)
+                                        
+                    .form__group
+                        label.form__label(for='manage-create-tour-fourth-date') Fourth Date
+                        input#manage-create-tour-fourth-date.form__input(type='date')
+                    .form__group
+                        label.form__label(for='manage-create-tour-start-location') Start Location
+                            .astric_required *
+                        div.location-container
+                            input#manage-create-tour-start-location-lng.location-lng-lat.form__input(type='text', required, placeholder='lng')
+                            input#manage-create-tour-start-location-lat.location-lng-lat.form__input(type='text', required, placeholder='lat')
+                    .form__group
+                        label.form__label(for='manage-create-tour-start-location') First Location
+                            .astric_required *
+                        div.location-container
+                            input#manage-create-tour-first-location-lng.location-lng-lat.form__input(type='text', required, placeholder='lng')
+                            input#manage-create-tour-first-location-lat.location-lng-lat.form__input(type='text', required, placeholder='lat')
+        
+                    .form__group
+                        label.form__label(for='manage-create-tour-start-location') Second Location
+                        div.location-container
+                            input#manage-create-tour-second-location-lng.location-lng-lat.form__input(type='text', placeholder='lng')
+                            input#manage-create-tour-second-location-lat.location-lng-lat.form__input(type='text', placeholder='lat')
+                    .form__group
+                        label.form__label(for='manage-create-tour-start-location') Third Location
+                        div.location-container
+                            input#manage-create-tour-third-location-lng.location-lng-lat.form__input(type='text',  placeholder='lng')
+                            input#manage-create-tour-third-location-lat.location-lng-lat.form__input(type='text',  placeholder='lat')
+                    .form__group
+                        label.form__label(for='manage-create-tour-start-location') Fourth Location
+                        div.location-container
+                            input#manage-create-tour-fourth-location-lng.location-lng-lat.form__input(type='text', placeholder='lng')
+                            input#manage-create-tour-fourth-location-lat.location-lng-lat.form__input(type='text', placeholder='lat')
+            
+                    .form__group
+                        label.form__label(for='manage-create-tour-image-cover') Image Cover 
+                            .astric_required *
+                        input#manage-create-tour-image-cover.form__input(type='file', name='manage-create-tour-image-cover', required ,accept="image/*")
+                    .form__group
+                        label.form__label(for='manage-create-tour-images') Images 
+                        input#manage-create-tour-images.form__input(type='file', name='manage-create-tour-images' ,accept="image/*")
+                    .form__group
+                        input#manage-create-tour-secret-tour.form__input(type='checkbox', name='manage-create-tour-secret-tour' )
+                        label.form__label(for='manage-create-tour-secret-tour') Secret Tour 
+                    .form__group
+                        button.btn.btn--blue#manage-create-tour-btn-form Create

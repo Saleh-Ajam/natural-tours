@@ -10,8 +10,22 @@ export const getTour = async(tourId) => {
         if(res.status === 200){
             return res.data.data.data;
         }
-        // console.log(res);
     }catch(err){
        showAlert('error',err.response.data.message);
+    }
+}
+export const createTour = async(data) => {
+    console.log(data);
+    try{
+        const res = await axios({
+            method: 'POST',
+            url: `/api/v1/tours`,
+            data
+        });
+        if(res.status === 200){
+            showAlert('success','Tour is created successfully!');
+        }
+    }catch(err){
+        showAlert('error',err.response.data.message);
     }
 }

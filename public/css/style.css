@@ -1604,6 +1604,186 @@ input[id='searchbar']::placeholder {
 #search-btn:active {
   background-color: #377cad;
 }
+
+main.main ul.manage-list > li,
+main.main ul.manage-list > li::before {
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05),
+    0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+main.main ul.manage-list {
+  counter-reset: gradient-counter;
+  list-style: none;
+  margin: 1.75rem 0;
+  padding-left: 1rem;
+}
+main.main ul.manage-list > li {
+  background: white;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+  counter-increment: gradient-counter;
+  margin-top: 1rem;
+  min-height: 3rem;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+}
+main.main ul.manage-list > li:nth-child(10n + 10):before {
+  background: linear-gradient(
+    135deg,
+    rgba(162, 237, 86, 0) 0%,
+    rgba(253, 220, 50, 0) 100%
+  );
+}
+main.main ul.manage-list > li + li {
+  margin-top: 2rem;
+}
+section.manage-create-section {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+section.manage-create-section p {
+  float: left;
+  font-size: 2rem;
+}
+section.manage-create-section button {
+  float: right;
+  padding: 7px;
+  background-color: #408ec6;
+  color: whitesmoke;
+  border: 0;
+  border-radius: 5px;
+}
+section.manage-create-section button:hover {
+  cursor: pointer;
+}
+section.manage-create-section button:active {
+  background-color: #207abb;
+}
+
+li.manage-list-item {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.manage-list-item-text {
+  float: left;
+}
+.manage-list-item-name {
+  font-size: 2rem;
+}
+.manage-list-item-summary {
+  font-size: 1.5rem;
+}
+.manage-list-item-btns {
+  float: right;
+}
+.manage-list-item-btns button.details {
+  float: right;
+  padding: 7px;
+  background-color: #d1c516;
+  color: whitesmoke;
+  border: 0;
+  border-radius: 5px;
+  margin: 2px;
+}
+.manage-list-item-btns button.details:active {
+  background-color: #aaa017;
+}
+.manage-list-item-btns button.details:hover {
+  cursor: pointer;
+}
+.manage-list-item-btns button.delete {
+  float: right;
+  padding: 7px;
+  background-color: #d61922;
+  color: whitesmoke;
+  border: 0;
+  border-radius: 5px;
+  margin: 2px;
+}
+.manage-list-item-btns button.delete:active {
+  background-color: #aa171f;
+}
+.manage-list-item-btns button.delete:hover {
+  cursor: pointer;
+}
+.manage-list-item-btns button.edit {
+  float: right;
+  padding: 7px;
+  background-color: #259145;
+  color: whitesmoke;
+  border: 0;
+  border-radius: 5px;
+  margin: 2px;
+}
+.manage-list-item-btns button.edit:active {
+  background-color: #198139;
+}
+.manage-list-item-btns button.edit:hover {
+  cursor: pointer;
+}
+section.search-container-manage input {
+  margin-right: 1%;
+  border: 2px solid #408ec6;
+  padding: 7px;
+  color: #408ec6;
+  border-radius: 8px;
+}
+
+section.search-container-manage input {
+  width: 30%;
+
+  -webkit-transition: width 0.15s ease-in-out;
+
+  transition: width 0.15s ease-in-out;
+}
+
+section.search-container-manage input:focus {
+  outline: none;
+}
+section.search-container-manage input::placeholder {
+  color: #67acdd;
+}
+section.search-container-manage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+section.search-container-manage button {
+  padding: 7px;
+  background-color: #408ec6;
+  color: whitesmoke;
+  border: 0;
+  border-radius: 5px;
+}
+section.search-container-manage button:active {
+  background-color: #207abb;
+}
+.astric_required {
+  color: #d61922;
+  display: inline-block;
+}
+.required-desc-manage-create-tour p {
+  font-size: 1.5rem;
+  color: #d61922;
+  margin-bottom: 10px;
+}
+#manage-create-tour-secret-tour {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px;
+}
+label.form__label[for='manage-create-tour-secret-tour'] {
+  display: inline-block;
+}
+.location-lng-lat {
+  width: 49%;
+  margin: 2px;
+}
+.location-container {
+  display: flex;
+}
 @media only screen and (max-width: 1250px) {
   .heading-primary {
     font-size: 4rem;

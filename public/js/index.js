@@ -5,7 +5,7 @@ import {updateSettings} from './updateSettings';
 import {bookTour} from './stripe';
 import { showAlert } from './alerts';
 import {createReview, deleteReview, editReview} from './reviews';
-import {getTour} from './tours';
+import {createTour} from './tours';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
@@ -25,6 +25,8 @@ const createReviewBtnFormInput = document.getElementById('button-create-review')
 const deleteMyReviewBtns = document.getElementsByClassName('delete-my-review-btn');
 const editMyReviewButtonFormInput = document.getElementById('button-edit-review');
 const searchButton = document.getElementById('search-btn');
+const manageCreateTourBtn = document.querySelector('.manage-create-btn-tours');
+const manageCreateTourForm = document.getElementById('create-tour-form');
 // VALUES
 
 // DELEGATION
@@ -211,5 +213,49 @@ if(searchButton) {
         e.preventDefault();
         const searchQuery = document.getElementById('searchbar').value;
         location.assign(`/tours/search?name=${searchQuery}`);
+    });
+}
+if(manageCreateTourBtn){
+    manageCreateTourBtn.addEventListener('click', e => {
+        e.preventDefault();
+        location.assign('/create-tour');
+    });
+}
+if(manageCreateTourForm){
+    manageCreateTourForm.addEventListener('submit', e=> {
+        e.preventDefault();
+        const name = document.getElementById('manage-create-tour-name').value;
+        const duration = document.getElementById('manage-create-tour-duration').value;
+        const maxGroupSize =document.getElementById('manage-create-tour-max-group-size').value;
+        const difficulty = document.getElementById('manage-create-tour-difficulty').value;
+        const price = document.getElementById('manage-create-tour-price').value;
+        // const priceDiscount = document.getElementById('manage-create-tour-price-discount').value;
+        const summary = document.getElementById('manage-create-tour-sumamry').value;
+        // const description = document.getElementById('manage-create-tour-description').value;
+        const imageCover = document.getElementById('manage-create-tour-image-cover').files[0].name;
+        // const leadGuide = document.getElementById('manage-create-tour-lead-guide').value;
+        // const firstGuide = document.getElementById('manage-create-tour-first-guide').value;
+        // const secondGuide = document.getElementById('manage-create-tour-second-guide').value;
+
+        // const guides = [leadGuide, firstGuide];
+        // if (secondGuide && secondGuide!== firstGuide){
+        //     guides.push(secondGuide);
+        // }   
+        // const form = new FormData();
+        // form.append('name',name);
+        // form.append('duration', duration);
+        // form.append('maxGroupSize', maxGroupSize);
+        // form.append('difficulty', difficulty);
+        // form.append('price', price);
+        // form.append('summary', summary);
+        // form.append('imageCover', imageCover);
+        // window.setTimeout(() => {
+        //     location.assign('/me');
+        // }, 1000);
+        // console.log('submit');
+        // console.log(form);
+        // createTour({name, duration, maxGroupSize, difficulty, price, summary, imageCover});
+        console.log({name, duration, maxGroupSize, difficulty, price, summary, imageCover});
+        // console.log({name, duration, maxGroupSize, difficulty, price, priceDiscount, summary, description, guides, imageCover});
     });
 }

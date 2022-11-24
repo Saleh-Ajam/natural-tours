@@ -23,4 +23,6 @@ router.get('/careers', authController.isLoggedIn, viewsController.getCareers);
 router.get('/my-bookings', authController.protect, viewsController.getMyTours);
 router.get('/tours/search', authController.isLoggedIn,  viewsController.getSearchResult);
 router.post('/submit-user-data', authController.protect, viewsController.updateUserData);
+router.get('/manage-tours', authController.protect, authController.restrictTo('admin'), viewsController.manageTours);
+router.get('/create-tour', authController.protect, authController.restrictTo('admin'), viewsController.getManageCreateTourForm);
 module.exports = router;

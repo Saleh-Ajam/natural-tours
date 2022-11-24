@@ -1,0 +1,25 @@
+extends base
+
+mixin tours-list(tours)
+    each tour in tours
+        li.manage-list-item
+            .manage-list-item-text
+                p.manage-list-item-name #{tour.name}
+                p.manage-list-item-summary #{tour.summary}
+            .manage-list-item-btns
+                button.details details
+                button.delete delete
+                button.edit edit
+
+
+block content
+    main.main(class=`main-manage-${type}`)
+        //- section.search-container-manage
+        //-     input(class=`.searchbar-manage-${type}` type='text' name='search' placeholder=`Search ${type}..`)
+        //-     button(class=`.search-btn-manage-${type}`) search
+        section.manage-create-section
+            p Administration 
+            button(class=`manage-create-btn-${type}`) create
+        ul.manage-list
+            -if(type === 'tours')
+                +tours-list(tours)
